@@ -47,6 +47,7 @@ export default class Posts extends Component {
         const { actions, posts, profile } = this.props;
 
         const postsJSX = posts.map((post) => {
+            console.log('-> post', post);
             return (
                 <Catcher key = { post.get('id') }>
                     <Post
