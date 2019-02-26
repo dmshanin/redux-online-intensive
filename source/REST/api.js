@@ -16,13 +16,13 @@ export const api = {
             });
         },
 
-        login (userInfo) {
+        login (credentials) {
             return fetch(`${MAIN_URL}/user/login`, {
                 method:  'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(userInfo),
+                body: JSON.stringify(credentials),
             });
         },
 
@@ -33,6 +33,15 @@ export const api = {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ token: this.token }),
+            });
+        },
+
+        logout () {
+            return fetch(`${MAIN_URL}/user/logout`, {
+                method:  'GET',
+                headers: {
+                    Authorization: this.token,
+                },
             });
         },
     },
