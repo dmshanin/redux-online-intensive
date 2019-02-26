@@ -3,7 +3,7 @@ import { MAIN_URL, groupId } from "./config";
 
 export const api = {
     get token () {
-       return localStorage.getItem('token');
+        return localStorage.getItem('token');
     },
     auth: {
         signup (userInfo) {
@@ -32,7 +32,7 @@ export const api = {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({token: this.token}),
+                body: JSON.stringify({ token: this.token }),
             });
         },
     },
@@ -42,7 +42,7 @@ export const api = {
             return fetch(`${MAIN_URL}/feed`, {
                 method:  'GET',
                 headers: {
-                    'x-no-auth': groupId,
+                    Authorization: this.token,
                 },
             });
         },
@@ -51,8 +51,8 @@ export const api = {
             return fetch(`${MAIN_URL}/feed`, {
                 method:  'POST',
                 headers: {
+                    Authorization:  this.token,
                     'Content-Type': 'application/json',
-                    'x-no-auth':    groupId,
                 },
                 body: JSON.stringify({ comment }),
             });
